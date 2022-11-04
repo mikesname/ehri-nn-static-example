@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - {{ article.title|striptags }}{% endblock %}
+
+
+{% block head %}
+{{ super() }}
+
+{% import 'translations.html' as translations with context %}
+{% if translations.entry_hreflang(article) %}
+{{ translations.entry_hreflang(article) }}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<article>
+    <header>
+        {% import 'translations.html' as translations with context %}
+        {{ translations.translations_for(article) }}
+    </header>
+    {{ article.content }}
+</article>
+
+{% block extra %}
+{% endblock extra %}
+{% endblock content %}
