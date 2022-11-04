@@ -1,8 +1,11 @@
+import datetime
+
 AUTHOR = 'EHRI'
 SITENAME = 'EHRI-UK'
 SITEURL = ''
 COUNTRY_CODE = 'UK'
 SITE_TITLE = 'The UK National Holocaust Research Infrastructure'
+COPYRIGHT_YEAR = datetime.datetime.now().year
 
 PATH = 'content'
 

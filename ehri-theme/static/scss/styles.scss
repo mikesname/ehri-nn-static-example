@@ -133,25 +133,30 @@ p {
 
 .banner {
     grid-area: banner;
-    
+    color: $white;
+
     display: flex;
     flex-direction: column;
     background-color: $secondary;
     font-family: $headings-font-family;
 
-    .country-code {
-        position: relative;
-        float: right;
-        top: 2rem;
-        right: 3rem;
-        font-size: 3rem;
-        color: #b5abe4; // fixme
+    .header {
+        width: 16rem;
+        padding: 2rem 3rem;
     }
 
     .logo {
-        width: 16rem;
-        padding: 2rem 3rem;
-        color: $white;
+        position: relative;
+    }
+
+    .country-code {
+        position: absolute;
+        float: right;
+        margin: 0;
+        bottom: -1rem;
+        right: 1rem;
+        font-size: 3rem;
+        color: #b5abe4; // fixme
     }
 
     nav a {

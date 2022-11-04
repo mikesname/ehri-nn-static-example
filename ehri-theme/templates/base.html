@@ -23,9 +23,11 @@
 <!--        <script src="js/index.js" async defer></script>-->
 
         <header class="banner">
-            <div class="logo">
-                <a href="{{ SITEURL }}/"><img src="{{ SITEURL }}/theme/images/ehri-logo@2x.png" alt="EHRI Logo"/></a>
-                <h1 class="country-code">{{ COUNTRY_CODE }}</h1>
+            <div class="header">
+                <div class="logo">
+                    <a href="{{ SITEURL }}/"><img src="{{ SITEURL }}/theme/images/ehri-logo@2x.png" alt="EHRI Logo"/></a>
+                    <h1 class="country-code">{{ COUNTRY_CODE }}</h1>
+                </div>
                 <h2 class="title">{{ SITE_TITLE }}</h2>
             </div>
             <nav class="nav main-navbar">
@@ -71,7 +73,7 @@
         </main>
         <footer class="footer">
             <div class="footer-content">
-                &copy; 2022 EHRI-UK
+                &copy; {{ COPYRIGHT_YEAR }} {{ SITENAME }}
             </div>
         </footer>
     </body>
