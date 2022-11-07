@@ -4,6 +4,8 @@ Category: Page
 Slug: about
 Translation: true
 lang: it
+URL: about-it
+save_as: about-it.html
 
 #A proposito EHRI-UK
 

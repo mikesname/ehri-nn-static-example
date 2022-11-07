@@ -2,6 +2,8 @@ Title: Contact EHRI-UK
 Date: 2022-11-04 13:54
 Category: Page
 Slug: contact
+URL: contact
+save_as: contact.html
 
 # Contact
 

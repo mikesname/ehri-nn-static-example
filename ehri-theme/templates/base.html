@@ -32,26 +32,9 @@
             </div>
             <nav class="nav main-navbar">
                 <ul class="navbar">
-                    <li>
-                        <a href="{{ SITEURL }}/">
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="about">
-                            About EHRI-UK
-                        </a>
-                    </li>
-                    <li>
-                        <a href="services">
-                            EHRI Services
-                        </a>
-                    </li>
-                    <li>
-                        <a href="contact">
-                            Contact
-                        </a>
-                    </li>
+                    {% for title, url in MENUITEMS %}
+                    <li><a href="{{ SITEURL }}/{{ url }}">{{ title }}</a></li>
+                    {% endfor %}
                 </ul>
             </nav>
         </header>

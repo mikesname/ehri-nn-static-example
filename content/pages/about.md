@@ -2,6 +2,8 @@ Title: About EHRI-UK
 Date: 2022-11-04 13:54
 Category: Page
 Slug: about
+URL: about
+save_as: about.html
 
 #About EHRI-UK
 
@@ -28,7 +30,7 @@ Europe and beyond.
 <aside class="people">
     <ul class="person-list">
         <li class="person">
-            <img class="person-image" src="images/pistol_headshot.webp"
+            <img class="person-image" src="../images/pistol_headshot.webp"
                  alt="Rachel Pistol image" />
             <h2 class="person-name">Dr. Rachel Pistol</h2>
             <p class="person-about">
@@ -42,7 +44,7 @@ Europe and beyond.
             </p>
         </li>
         <li class="person">
-            <img class="person-image" src="images/schmidt_headshot.webp"
+            <img class="person-image" src="../images/schmidt_headshot.webp"
                  alt="Christine Schmidt image" />
             <h2 class="person-name">Dr. Christine Schmidt</h2>
             <p class="person-about">
