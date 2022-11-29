@@ -1,17 +1,17 @@
 import datetime
 
 AUTHOR = 'EHRI'
-SITENAME = 'EHRI-UK'
+SITENAME = 'EHRI-SK'
 SITEURL = ''
-COUNTRY_CODE = 'UK'
-SITE_TITLE = 'The UK National Holocaust Research Infrastructure'
+COUNTRY_CODE = 'SK'
+SITE_TITLE = 'Národným uzlom EHRI ERIC na Slovensku'
 COPYRIGHT_YEAR = datetime.datetime.now().year
 
 PATH = 'content'
 
-TIMEZONE = 'Europe/Amsterdam'
+TIMEZONE = 'Europe/Bratislava'
 
-DEFAULT_LANG = 'en'
+DEFAULT_LANG = 'sk'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -21,10 +21,12 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 MENUITEMS = (
-    ('Home', ''),
-    ('About EHRI-UK', 'about'),
-    ('EHRI Services', 'services'),
-    ('Contact Us', 'contact'),
+    ('O EHRI', ''),
+    ('EHRI na Slovensku', 'about'),
+    ('Služby', 'services'),
+    ('Používatelia', 'users'),
+    ('Správy a podujatia', 'news'),
+    ('Kontakt', 'contact'),
     )
 
 DEFAULT_PAGINATION = False

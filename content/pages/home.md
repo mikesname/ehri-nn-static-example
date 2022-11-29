@@ -1,31 +1,20 @@
-Title: Holocaust Research | EHRI-UK
-Date: 2022-11-04 13:54
+Title: O EHRI | EHRI-SK
+Date: 2022-11-29 14:47
 Category: Page
 Slug: home
 URL: 
 save_as: index.html
 
-# EHRI-UK
+# O EHRI
 
-## Creating a UK National Holocaust Research Infrastructure
+European Holocaust Research Infrastructure je stála európska distribuovaná vedecká infraštruktúra, 
+ktorá napomáha výskumu holokaustu, jeho pripomínaniu a vzdelávaniu oňom. Robí tak prekonávaním 
+závažného problému, ktorým je roztrieštenosť a rozptýlenosť relevantných prameňov, informácií a 
+znalostí po rôznych krajinách sveta.
 
-The UK holds a unique collection of records relating to the Holocaust and refugees who 
-fled Nazi oppression. EHRI-UK is working towards finding and linking this source material 
-in the UK through a national digital Holocaust Research Infrastructure.
+EHRI vyvíja nové metódy a poskytuje digitálne služby a nástroje pre vedcov a archivárov na prácu s 
+prameňmi a na ich prezentáciu.
 
-EHRI-UK is the UK national node of the European Holocaust Research Infrastructure (EHRI),
-a European Union funded project which in the process of becoming a permanent pan-European
-organisation.
+Prostredníctvom štipendií a stáží EHRI zároveň podporuje výchovu novej generácie vedcov a archivárov.
 
-[Find out more](about.md)
-
-## Watch a short video below to learn more about EHRI's mission and vision.
-
-<iframe 
-    width="560" 
-    height="315" 
-    src="https://www.youtube.com/embed/HR_R0SSMWz0" title="YouTube video player" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen="">
-</iframe>
+[EHRI na Slovensku](about.md)
