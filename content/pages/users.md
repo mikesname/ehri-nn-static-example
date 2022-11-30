@@ -12,7 +12,7 @@ TODO: intro text in _markdown_ format.
 <aside class="people">
     <ul class="person-list">
         <li class="person">
-            <img class="person-image" src="../images/default-gravitar.png" alt="Example person image" />
+            <img class="person-image" src="{static}/images/default-gravitar.png" alt="Example person image" />
             <h2 class="person-name">Dr. A. Person</h2>
             <div class="person-about">
                 <p>
@@ -23,7 +23,7 @@ TODO: intro text in _markdown_ format.
             </div>
         </li>
         <li class="person">
-            <img class="person-image" src="../images/default-gravitar.png" alt="Example person image" />
+            <img class="person-image" src="{static}/images/default-gravitar.png" alt="Example person image" />
             <h2 class="person-name">Dr. A.N. Other</h2>
             <div class="person-about">
                 <p>
