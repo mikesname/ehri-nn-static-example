@@ -230,66 +230,72 @@ p {
 }
 
 // About page
-.people {
-    .person-list {
-        display: grid;
-        grid-gap: 1rem;
+.person-list,
+.service-list
+{
+    display: grid;
+    grid-gap: 1rem;
 
-        margin: 0;
-        padding: 0;
+    margin: 0;
+    padding: 0;
 
-        li {
-            list-style: none;
-        }
+    li {
+        list-style: none;
     }
 }
 
 .people .person {
     display: grid;
 
-    grid-template-areas: "person-image person-name" "person-image person-about";
+    grid-template-areas:
+            "image title"
+            "image description";
     grid-gap: 1rem;
+    grid-template-rows: min-content 1fr;
+    grid-template-columns: min-content 1fr;
+    margin-bottom: 1rem;
 
     .person-image {
-        grid-area: person-image;
+        grid-area: image;
 
         border-radius: 50%;
         width: 10rem;
         height: auto;
     }
-
     .person-name {
-        grid-area: person-name;
+        grid-area: title;
         margin: 0;
     }
-
     .person-about {
-        grid-area: person-about;
+        grid-area: description;
     }
 }
 
 // Services
-.service {
+.services .service {
     display: grid;
+
     grid-template-areas:
-        "logo title"
-        "logo description";
+        "image title"
+        "image description";
     grid-gap: 1rem;
+    grid-template-rows: min-content 1fr;
+    grid-template-columns: min-content 1fr;
     margin-bottom: 1rem;
 
-    .logo {
-        grid-area: logo;
+    .service-image {
+        grid-area: image;
 
         img {
             width: 10rem;
             height: auto;
         }
     }
-    h4 {
+    .service-name {
         grid-area: title;
         margin: 0;
     }
-    .service-description {
+    .service-about {
         grid-area: description;
     }
 }
