@@ -4,7 +4,7 @@ AUTHOR = 'EHRI'
 SITENAME = 'EHRI-SK'
 SITEURL = ''
 COUNTRY_CODE = 'SK'
-SITE_TITLE = 'Národným uzlom EHRI ERIC na Slovensku'
+SITE_TITLE = 'Národná platforma pre spoluprácu s EHRI v Slovenskej republike'
 COPYRIGHT_YEAR = datetime.datetime.now().year
 
 PATH = 'content'
