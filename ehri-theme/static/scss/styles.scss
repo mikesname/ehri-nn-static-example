@@ -1,314 +1,256 @@
 
 @import "fonts.scss";
 
-// Bootstrap deps
-//@import "../node_modules/bootstrap/scss/functions";
-//@import "../node_modules/bootstrap/scss/variables";
-//@import "../node_modules/bootstrap/scss/maps";
-//@import "../node_modules/bootstrap/scss/mixins";
-//@import "../node_modules/bootstrap/scss/utilities";
-//@import "../node_modules/bootstrap/scss/root";
-//@import "../node_modules/bootstrap/scss/reboot";
-//@import "../node_modules/bootstrap/scss/type";
-//@import "../node_modules/bootstrap/scss/forms";
-
 $fa-font-path:        "../fonts";
 @import "fa/font-awesome";
 
 $primary: #83014c;
-$secondary: #330033;
-$white: #fff;
-$body-bg: #b7b0b0;
+$headings-font-family: 'Barlow', sans-serif;
+$font-family-base: 'Noto Serif', serif;
 
 
-// Footer and category badges etc
-$gray-200: #ecedee;
-$border-gray: #cecfcf;
+$font-size-base: 1.0625rem;
+$font-size-xs: 0.625rem;
+$font-size-sm: 0.875rem;
+$font-size-md: 1.125rem;
+$font-size-lg: 1.5rem;
+$font-size-title: 2rem;
 
-// Fonts
-$font-size-base: 12px;
+$font-weight-reg: 400;
+$font-weight-bold: 500;
+$font-weight-bolder: 600;
 
-$font-size-xs: .75rem; 		// 12px
-$font-size-sm: 0.875rem; 	// 14px
-$font-size-base: 1.0625rem; // 17px
-$font-size-lg: 1.25rem;		// 20px
+$space-sm: 0.5rem;
+$space-md: 1rem;
+$space-lg: 1.5rem;
+$space-xl: 2rem;
 
-// Headings
-$h1-font-size: 2.625rem;
-$h2-font-size: 1.375rem;
-$h3-font-size: 1.375rem;
-$h4-font-size: $font-size-base;
-$h5-font-size: $font-size-base;
-$h6-font-size: $font-size-base;
+$wine-red: #771646;
+$purple: #3E274B;
+$darkgrey: #46463D;
+$beige: #D5D2B8;
+$beige-light: linear-gradient(0deg, rgba(213, 210, 184, 0.2), rgba(213, 210, 184, 0.2)), #FFFFFF;
+$white: #FFF;
 
-$headings-font-family: 'Barlow Semi Condensed', sans-serif;
-$font-family-base: 'Roboto', sans-serif;
+$h-space: 3.4rem;
+$v-space: 3.1875rem;
 
-// golden ratio margins...
-$margin-xxs: 0.309rem;
-$margin-xs: 0.5rem;
-$margin-sm: 0.809rem;
-$margin-md: 1.309rem;
-$margin-lg: 2.118rem;
-$margin-xl: 3.4270510rem;
-
-// Break points
-$breakpoint-sm: 768px;
-$breakpoint-md: 900px;
-$breakpoint-lg: 1224px;
-
-// Resets
-html, 
+html,
 body {
-    padding: 0;
-    margin: 0;
-    height: 100%;
+  padding: 0;
+  margin: 0;
+  height: 100%;
 }
+
 
 body {
-    display: flex;
-    flex-direction: column;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
 
-    font-family: $font-family-base;
+  display: flex;
+  flex-direction: column;
 }
 
-a {
-    color: $primary;
-    text-decoration: none;
-
-    &:hover {
-        text-decoration: underline;
-    }
-}
-
-body {
-    background-color: $body-bg;
-
-    display: grid;
-
-    grid-template-areas: "banner hero hero" "banner main social" "footer footer footer";
-
-
-    grid-template-columns: 2fr 4fr 1fr;
-    grid-template-rows: 16rem 1fr min-content;
-
-    @media (max-width: $breakpoint-sm) {
-        grid-template-areas: "banner banner" "main main" "social social" "footer footer";
-        grid-template-columns: unset;
-        grid-template-rows: none;
-    }
-
-    @media (min-width: $breakpoint-lg) {
-        grid-template-columns: 20rem $breakpoint-sm auto;
-    }
-}
-
-h1,
-h2,
-h3,
-h4 {
-    font-family: $headings-font-family;
+h1, h2, h3, h4, h5, h6
+{
+  font-family: $headings-font-family;
 }
 
 h1 {
-    font-size: $h1-font-size;
+  font-size: 4rem;
 }
 
 h2 {
-    font-size: $h2-font-size;
+  font-size: 2.25rem;
 }
 
 h3 {
-    font-size: $h3-font-size;
+  font-size: $font-size-title;
 }
 
 h4 {
-    font-size: $h4-font-size;
+  font-size: 1.375rem;
 }
 
-p {
-    margin-top: 0;
-    margin-bottom: 1rem;
+h5 {
+  font-size: $font-size-md;
 }
 
-.banner {
-    grid-area: banner;
-    color: $white;
+h6 {
+  font-size: $font-size-base;
+}
 
+/**
+ * Header navigation
+ */
+header.top {
+  color: $wine-red;
+  font-family: $headings-font-family;
+
+  border-top: $font-size-xs solid $wine-red;
+
+  padding: $v-space $h-space;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  a {
+    color: $wine-red;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: $font-size-md;
+  }
+
+  .header {
     display: flex;
-    flex-direction: column;
-    background-color: $secondary;
-    font-family: $headings-font-family;
+    flex-direction: row;
+    align-items: center;
+  }
 
-    .header {
-        width: 16rem;
-        padding: 2rem 3rem;
-    }
+  .logo {
+    width: 155px;
+    height: auto;
+    margin-bottom: -$space-xl;
+  }
 
-    .logo {
-        position: relative;
-    }
+  .title {
+    font-size: $font-size-title;
+    margin-left: 44px;
+  }
 
-    .country-code {
-        position: absolute;
-        float: right;
-        margin: 0;
-        bottom: -1rem;
-        right: 1rem;
-        font-size: 3rem;
-        color: #b5abe4; // fixme
-    }
+  .main-navbar {
+    margin-left: auto;
+    min-width: 50%;
+  }
 
-    nav a {
-        text-transform: uppercase;
-    }
-}
-
-
-.nav > ul {
+  ul.navbar {
     margin: 0;
     padding: 0;
 
-    li {
-        list-style: none;
-
-        padding: 1rem 3rem;
-
-        a {
-            color: $white;
-            text-decoration: none;
-        }
-    }
-}
-
-.hero {
-    grid-area: hero;
-
-    background-image: url(../images/wl-test-bg.jpg);
-    background-size: cover;
-    background-position-y: 400px;
-}
-
-.social {
-    grid-area: social;
-
-    header {
-        display: none;
-    }
-
-    display: grid;
-    grid-gap: 1rem;
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    margin-top: auto;
-    margin-bottom: auto;
-    justify-content: right;
+    justify-content: space-between;
 
-    @media (max-width: $breakpoint-sm) {
-        margin: 0 auto;
-        align-items: unset;
-        justify-content: unset;
-        grid-template-rows: 1fr;
-        grid-template-columns: 1fr 1fr;
-        padding: 1rem 0;
+    li {
+      list-style: none;
+      margin: 0 $space-md;
+      //max-width: 2 * $h-space;
+      text-align: center;
+      white-space: break-spaces;
     }
+    li:last-child {
+      margin-right: 0;
+    }
+  }
 }
 
-.footer {
-    grid-area: footer;
-
-    background-color: $gray-200;
-    padding: 2rem 3rem;
-}
-
+/**
+ *
+ */
 .main-content {
-    grid-area: main;
-    padding: 1rem 3rem 4rem 3rem;
-    background-color: $white;
-    //max-width: 768px;
-    //min-width: 50%;
-    //justify-self: left;
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-// About page
-.people {
-    .person-list {
-        display: grid;
-        grid-gap: 1rem;
 
-        margin: 0;
-        padding: 0;
+/**
+ * Footer
+ */
+footer {
+  margin-top: auto;
+  padding: $v-space $h-space;
 
-        li {
-            list-style: none;
-        }
-    }
-}
+  background-color: $darkgrey;
+  color: $beige;
+  font-family: $headings-font-family;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-reg;
+  line-height: 24px;
 
-.people .person {
+  .logo {
+    margin-bottom: 3 * $space-md;
+  }
+
+  .title {
+    display: block;
+    font-size: $font-size-title;
+    white-space: break-spaces;
+    line-height: 2.125rem;
+    width: min-content;
+  }
+
+  a {
+    color: $beige;
+    text-decoration: none;
+  }
+
+  .footer-content {
     display: grid;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-gap: 3rem 4rem;
 
-    grid-template-areas: "person-image person-name" "person-image person-about";
-    grid-gap: 1rem;
-
-    .person-image {
-        grid-area: person-image;
-
-        border-radius: 50%;
-        width: 10rem;
-        height: auto;
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        list-style: none;
+        padding: $space-lg 0;
+        font-weight: $font-weight-bolder;
+      }
     }
 
-    .person-name {
-        grid-area: person-name;
-        margin: 0;
+    ul > li > ul {
+      margin-top: $space-sm;
     }
 
-    .person-about {
-        grid-area: person-about;
+    ul > li > ul > li {
+      font-size: $font-size-md;
+      font-weight: $font-weight-reg;
+      padding: $space-sm 0;
     }
-}
+  }
 
-// Contact page
-.form {
-    fieldset {
-        border: 1px solid $border-gray;
+  .contact-card {
+    margin-top: 1.5rem;
+    a {
+      display: block;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-reg;
     }
+  }
 
-    .form-group {
-        margin-bottom: $margin-sm;
+  .footer-headings {
+    grid-area: 1 / 1 / 1 / 1;
+  }
+  .menu-1 {
+    grid-area: 1 / 2 / 1 / 2;
+  }
+  .menu-2 {
+    grid-area: 1 / 3 / 1 / 3;
+  }
+  .menu-3 {
+    grid-area: 1 / 4 / 1 / 4;
+  }
+  .social {
+    grid-area: 1 / 5 / 1 / 5;
+    text-align: center;
+    font-size: $font-size-base;
+    padding-top: $space-lg;
+  }
 
-        label,
-        input {
-            display: block;
-        }
-
-        label {
-            margin-bottom: $margin-xs;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            border-radius: 0;
-            border: 1px solid $border-gray;
-            padding: $margin-xxs $margin-xs;
-        }
+  .partners {
+    p {
+      margin-bottom: $space-md;
     }
+    grid-area: 2 / 2 / 2 / 2;
+  }
 
-    button {
-        display: inline-block;
-        font-weight: 400;
-        white-space: nowrap;
-        padding: $margin-xs $margin-xs;
-        border-radius: 0;
-        border: 1px solid transparent;
-        cursor: pointer;
-        background-color: $primary;
-        color: $white;
-        line-height: 1.5;
-
-        &:hover {
-            background-color: darken($primary, 5%);
-        }
-    }
+  .footer-copyright {
+    grid-area: 3 / 5 / 3 / 5;
+    text-align: end;
+    font-size: $font-size-sm;
+  }
 }

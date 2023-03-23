@@ -4,12 +4,13 @@ AUTHOR = 'EHRI'
 SITENAME = 'EHRI-UK'
 SITEURL = ''
 COUNTRY_CODE = 'UK'
-SITE_TITLE = 'The UK National Holocaust Research Infrastructure'
+SITE_TITLE = 'United Kingdom'
 COPYRIGHT_YEAR = datetime.datetime.now().year
+COPYRIGHT_HOLDER = "EHRI Consortium"
 
 PATH = 'content'
 
-TIMEZONE = 'Europe/Amsterdam'
+TIMEZONE = 'Europe/London'
 
 DEFAULT_LANG = 'en'
 
@@ -21,10 +22,11 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 MENUITEMS = (
-    ('Home', ''),
-    ('About EHRI-UK', 'about'),
-    ('EHRI Services', 'services'),
-    ('Contact Us', 'contact'),
+    ('About', 'about'),
+    ('Partners', 'partners'),
+    ('Fellowships & Training', 'training'),
+    ('Services', 'services'),
+    ('Contact', 'contact'),
     )
 
 DEFAULT_PAGINATION = False

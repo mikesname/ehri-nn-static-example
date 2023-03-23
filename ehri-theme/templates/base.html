@@ -20,16 +20,14 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         
-<!--        <script src="js/index.js" async defer></script>-->
-
-        <header class="banner">
+        <header class="top">
             <div class="header">
                 <div class="logo">
-                    <a href="{{ SITEURL }}/"><img src="{{ SITEURL }}/theme/images/ehri-logo@2x.png" alt="EHRI Logo"/></a>
-                    <h1 class="country-code">{{ COUNTRY_CODE }}</h1>
+                    <a href="{{ SITEURL }}/"><img src="{{ SITEURL }}/theme/images/ehri-logo.svg" alt="EHRI Logo"/></a>
                 </div>
-                <h2 class="title">{{ SITE_TITLE }}</h2>
+                <a href="{{ SITEURL }}" class="title">{{ SITE_TITLE }}</a>
             </div>
+
             <nav class="nav main-navbar">
                 <ul class="navbar">
                     {% for title, url in MENUITEMS %}
@@ -38,26 +36,92 @@
                 </ul>
             </nav>
         </header>
-        <header class="hero"></header>
-        <aside class="social">
-            <header>Follow</header>
-            <a class="follow-button" href="https://facebook.com/EHRIproject" title="Follow EHRI on Facebook">
-                <i class="fa fa-fw fa-2x fa-facebook" aria-hidden="true"></i>
-                <span class="sr-only">Facebook</span>
-            </a>
 
-            <a class="follow-button" href="https://twitter.com/EHRIproject" title="Follow EHRI on Twitter">
-                <i class="fa fa-fw fa-2x fa-twitter" aria-hidden="true"></i>
-                <span class="sr-only">Twitter</span>
-            </a>
-        </aside>
+        <header class="hero"></header>
+
         <main class="main-content">
             {% block content %}{% endblock content %}
         </main>
+
         <footer class="footer">
             <div class="footer-content">
-                &copy; {{ COPYRIGHT_YEAR }} {{ SITENAME }}
+                <div class="footer-headings">
+                    <div class="logo">
+                        <a href="{{ SITEURL }}/"><img src="{{ SITEURL }}/theme/images/ehri-logo-beige.svg" alt="EHRI Logo"/></a>
+                    </div>
+                    <a href="{{ SITEURL }}" class="title">{{ SITE_TITLE }}</a>
+                </div>
+
+                <ul class="menu-1">
+                    <li>
+                        <a href="about.html">About EHRI</a>
+                    </li>
+                    <li>
+                        <a href="partners.html">Partners</a>
+                    </li>
+                    <li>
+                        <a href="training.html">Fellowships & Training</a>
+                    </li>
+                </ul>
+
+                <ul class="menu-2">
+                    <li>
+                        <a href="services.html">Services</a>
+                        <ul>
+                            <li>
+                                <a target="_blank" href="https://portal.ehri-project.eu">Portal</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="https://blog.ehri-project.eu">Document Blog</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="https://github.com/EHRI/ehri-data-analysis-tools">Digital Tools Guide</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="https://www.ehri-project.eu">Podcast</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="menu-3">
+                    <li>
+                        <a href="contact.html">Contact</a>
+                        <div class="contact-card">
+                            EHRI UK
+                            <a href="mailto:feedback@ehri-uk.org">
+                                <i class="fa fa-fw fa-envelope-o"></i>
+                                feedback@ehri-uk.org
+                            </a>
+                        </div>
+                    </li>
+
+                </ul>
+
+                <div class="social">
+                    <a class="follow-button" href="https://facebook.com/EHRIproject" title="Follow EHRI on Facebook">
+                        <i class="fa fa-fw fa-2x fa-facebook" aria-hidden="true"></i>
+                        <span class="sr-only">Facebook</span>
+                    </a>
+
+                    <a class="follow-button" href="https://twitter.com/EHRIproject" title="Follow EHRI on Twitter">
+                        <i class="fa fa-fw fa-2x fa-twitter" aria-hidden="true"></i>
+                        <span class="sr-only">Twitter</span>
+                    </a>
+                </div>
+
+                <div class="partners">
+                    <p>Partners / Funders</p>
+                    <div class="partner-logos">
+                        <img src="{{ SITE_URL }}/theme/images/eu-logo.svg" alt="European Commission"/>
+                    </div>
+                </div>
+
+                <div class="footer-copyright">
+                    &copy; {{ COPYRIGHT_YEAR }} {{ COPYRIGHT_HOLDER }}
+                </div>
             </div>
+
         </footer>
     </body>
 </html>
