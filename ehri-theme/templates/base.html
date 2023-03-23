@@ -29,6 +29,12 @@
             </div>
 
             <nav class="nav main-navbar">
+                <label for="hb-toggle">Show menu</label>
+                <input id="hb-toggle" type="checkbox"/>
+                <span class="hb"></span>
+                <span class="hb"></span>
+                <span class="hb"></span>
+
                 <ul class="navbar">
                     {% for title, url in MENUITEMS %}
                     <li><a href="{{ SITEURL }}/{{ url }}">{{ title }}</a></li>

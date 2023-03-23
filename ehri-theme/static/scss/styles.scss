@@ -4,6 +4,10 @@
 $fa-font-path:        "../fonts";
 @import "fa/font-awesome";
 
+/**
+ * Globals
+ */
+// region Global
 $primary: #83014c;
 $headings-font-family: 'Barlow', sans-serif;
 $font-family-base: 'Noto Serif', serif;
@@ -42,7 +46,6 @@ body {
   height: 100%;
 }
 
-
 body {
   font-family: $font-family-base;
   font-size: $font-size-base;
@@ -80,6 +83,13 @@ h6 {
   font-size: $font-size-base;
 }
 
+a {
+  color: $wine-red;
+  text-decoration: none;
+}
+
+// endregion
+
 /**
  * Header navigation
  */
@@ -96,10 +106,8 @@ header.top {
   align-items: center;
 
   a {
-    color: $wine-red;
-    text-decoration: none;
-    font-weight: 500;
     font-size: $font-size-md;
+    font-weight: $font-weight-bold;
   }
 
   .header {
@@ -111,6 +119,8 @@ header.top {
   .logo {
     width: 155px;
     height: auto;
+    // Negative margin to push down centre line of logo
+    // so the 'H' aligns with nav bar.
     margin-bottom: -$space-xl;
   }
 
@@ -122,6 +132,13 @@ header.top {
   .main-navbar {
     margin-left: auto;
     min-width: 50%;
+
+    // Hide hamburger toggle
+    label[for='hb-toggle'],
+    input#hb-toggle,
+    span.hb {
+      display: none;
+    }
   }
 
   ul.navbar {
@@ -136,7 +153,6 @@ header.top {
     li {
       list-style: none;
       margin: 0 $space-md;
-      //max-width: 2 * $h-space;
       text-align: center;
       white-space: break-spaces;
     }
@@ -144,17 +160,122 @@ header.top {
       margin-right: 0;
     }
   }
+
+  // Turn menu into a hamburger pop-out at widths below.
+  // NB: largely borrowed from: https://codepen.io/erikterwan/pen/EVzeRP
+  @media (max-width: 1024px) {
+    .main-navbar {
+      min-width: unset;
+
+      // Hamburger toggle
+      input#hb-toggle {
+        display: block;
+        width: 40px;
+        height: $font-size-lg;
+        position: relative;
+        float: right;
+        top: -4px;
+        right: 7px;
+
+        cursor: pointer;
+
+        opacity: 0; /* hide this */
+        z-index: 2; /* and place it over the hamburger */
+
+        -webkit-touch-callout: none;
+      }
+      span.hb {
+        display: block;
+        width: 30px;
+        height: 3px;
+        margin-bottom: 5px;
+        position: relative;
+
+        background: $purple;
+        border-radius: 3px;
+
+        z-index: 1;
+
+        transform-origin: 4px 0;
+
+        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+        background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+        opacity 0.55s ease;
+      }
+
+      span.hb:first-child {
+        transform-origin: 0 0;
+      }
+
+      span.hb:nth-last-child(2) {
+        transform-origin: 0 100%;
+      }
+
+      ul.navbar {
+        z-index: 0;
+        position: absolute;
+        top: 0;
+        width: Max(50%, 300px); // Note: Uppercase Sass/Css disambiguation here
+        // When toggle is unchecked menu is positioned off-screen
+        margin: -$v-space 0 0 (2 * $h-space);
+        padding: $v-space $h-space;
+        padding-top: 2 * $v-space;
+
+        flex-direction: column;
+        align-items: unset;
+        justify-content: unset;
+
+        li {
+          text-align: unset;
+          margin-bottom: $space-lg;
+        }
+        background-color: $darkgrey;
+        color: $beige;
+
+        a {
+          color: $beige;
+          font-weight: $font-weight-bolder;
+          font-size: $font-size-lg;
+        }
+      }
+
+      // When the hamburger toggle is checked, move the lines to a cross...
+      input#hb-toggle:checked ~ span {
+        opacity: 1;
+        transform: rotate(45deg) translate(-2px, -1px);
+        background: $beige-light;
+      }
+
+      input#hb-toggle:checked ~ span:nth-last-child(3) {
+        opacity: 0;
+        transform: rotate(0deg) scale(0.2, 0.2);
+      }
+
+      input#hb-toggle:checked ~ span:nth-last-child(2) {
+        transform: rotate(-45deg) translate(0, -1px);
+      }
+
+      // ... and position the menu onscreen
+      input#hb-toggle:checked ~ span ~ span ~ span ~ ul.navbar {
+        -webkit-font-smoothing: antialiased;
+        /* to stop flickering of text in safari */
+
+        transform-origin: 0 0;
+        transform: translate(-100%, 0);
+        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+      }
+    }
+  }
 }
 
 /**
- *
+ * Main content
  */
 .main-content {
   max-width: 60%;
   margin-left: auto;
   margin-right: auto;
 }
-
 
 /**
  * Footer
@@ -170,8 +291,12 @@ footer {
   font-weight: $font-weight-reg;
   line-height: 24px;
 
+  a {
+    color: inherit;
+  }
+
   .logo {
-    margin-bottom: 3 * $space-md;
+    margin-bottom: 2 * $space-lg;
   }
 
   .title {
@@ -214,7 +339,7 @@ footer {
   }
 
   .contact-card {
-    margin-top: 1.5rem;
+    margin-top: $space-lg;
     a {
       display: block;
       font-size: $font-size-sm;
