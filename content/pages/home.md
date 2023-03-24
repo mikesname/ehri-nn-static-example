@@ -19,7 +19,7 @@ in the UK through a national digital Holocaust Research Infrastructure.
 
 </section>
 
-<section class="home video">
+<section class="home video paper">
 
 <h2><a href="https://www.youtube.com/embed/HR_R0SSMWz0">More about EHRI's mission and vision</a></h2>
 
@@ -74,7 +74,7 @@ Below are some of the innovative services created by EHRI for use by all.
             </div>
             <div class="resource-info">
                 <header><a href="https://diplomatic-reports.ehri-project.eu">Diplomatic Reports</a></header>
-                <p>The online edition "Diplomatic Reports" focuses on how diplomatic staff reported the persecution and murder of European Jews during World War II.</p>
+                <p>The online edition &quot;Diplomatic Reports&quot; focuses on how diplomatic staff reported the persecution and murder of European Jews during World War II.</p>
                 <a class="button-primary" href="https://diplomatic-reports.ehri-project.eu">Go to Diplomatic Reports</a>
             </div>
         </div>

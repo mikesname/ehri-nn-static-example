@@ -118,6 +118,7 @@ a {
 // region Components
 
 .button-primary {
+  color: $primary;
   border: 2px solid $primary;
   border-radius: 5px;
   padding: 0.75rem 1.25rem;
@@ -125,15 +126,48 @@ a {
   white-space: nowrap;
   font-family: $headings-font-family;
   font-weight: $font-weight-bold;
+  background-color: $white;
+}
+
+input,
+textarea {
+  border: 1px solid $beige;
+  border-radius: 5px;
+  display: block;
+  padding: $space-sm;
+  margin-bottom: $space-sm;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: $headings-font-family;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-md;
+}
+
+.form-group ~ button[type='submit'] {
+  margin-top: $space-sm;
 }
 
 // endregion
 
 // region Home page sections
-
-
-.home.hero {
+.hero {
+  h1 {
+    margin-top: 0;
+  }
+  h1:last-child {
+    margin-bottom: 0;
+  }
   padding: 5rem 25%;
+
+  p.intro {
+    font-size: 1.75rem;
+    font-weight: $font-weight-bold;
+    font-family: $headings-font-family;
+  }
+
+  li {
+    list-style-type: '— ';
+  }
 
   @media (max-width: $breakpoint-tablet) {
     max-width: unset;
@@ -142,12 +176,15 @@ a {
   }
 }
 
-.home.video {
+.paper {
+  background-image: url(../images/doc-paper-bgd-yellow.jpg);
   padding: 5rem 25%;
+}
+
+.home.video {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-image: url(../images/doc-paper-bgd-yellow.jpg);
 
   img {
     object-fit: contain;
@@ -272,6 +309,77 @@ a {
   @media (max-width: $breakpoint-phone + 200px) {
     .latest-cards {
       grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}
+
+// endregion
+
+// region About page sections
+.people {
+  .person-list {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2rem;
+  }
+  .person {
+    .person-image {
+      width: 16.25rem;
+      height: 16.25rem;
+      border-radius: 50%;
+    }
+  }
+
+  @media (max-width: $breakpoint-phone + 200px) {
+    .person-list {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}
+
+// endregion
+
+// region Contact page
+.contact-info {
+  padding: 0 25% 10rem 25%;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 5rem;
+
+  .form {
+    // Hide labels
+    label {
+      @extend .sr-only;
+    }
+  }
+
+  .person-list {
+    margin-bottom: 5rem;
+    grid-template-columns: 1fr;
+    .person {
+      display: grid;
+      grid-column-gap: 1rem;
+      grid-template-rows: min-content auto;
+      grid-template-columns: min-content auto;
+      grid-template-areas: "img name" "img email";
+
+      img.person-image {
+        grid-area: img;
+        width: 3.75rem;
+        height: 3.75rem;
+      }
+      .person-name {
+        grid-area: name;
+        font-family: $headings-font-family;
+        font-weight: $font-weight-bolder;
+      }
+      .person-email {
+        grid-area: email;
+        font-size: $font-size-sm;
+      }
     }
   }
 }
