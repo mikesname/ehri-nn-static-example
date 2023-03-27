@@ -122,15 +122,20 @@ a {
 
 // region Components
 
-.button-primary {
-  color: $primary;
-  border: 2px solid $primary;
+.button {
   border-radius: 5px;
-  padding: 0.75rem 1.25rem;
+  border: 2px solid transparent;
+  padding: .75rem 1.25rem;
   display: inline-block;
-  white-space: nowrap;
   font-family: $headings-font-family;
   font-weight: $font-weight-bold;
+}
+
+.button-primary {
+  @extend .button;
+  color: $primary;
+  border: 2px solid $primary;
+  white-space: nowrap;
   background-color: $white;
 
   &:hover {
@@ -472,23 +477,34 @@ header.top {
     }
   }
 
-  ul.navbar {
-    margin: 0;
-    padding: $space-sm 0 0 0;
+  .navbar {
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    > ul {
+      margin: 0;
+      padding: $space-sm 0 0 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      > li {
+        list-style: none;
+        text-align: center;
+        white-space: break-spaces;
+      }
+      > li:last-child {
+        margin-right: 0;
+      }
 
-    li {
-      list-style: none;
-      margin: 0 $space-md;
-      text-align: center;
-      white-space: break-spaces;
+      > li > a {
+        @extend .button;
+      }
+      > li > a:hover {
+        border-color: $beige;
+        background-color: $beige;
+      }
     }
-    li:last-child {
-      margin-right: 0;
+    > .social {
+      display: none;
     }
   }
 
@@ -550,35 +566,51 @@ header.top {
         transform-origin: 0 100%;
       }
 
-      ul.navbar {
-        z-index: 0;
-        position: absolute;
+      .navbar {
         box-sizing: border-box;
+        position: absolute;
+        z-index: 0;
         top: 0;
         right: 0;
-        // When toggle is unchecked menu is positioned off-screen
-        width: 0;
+        width: 0; // 0 size until toggle is clicked
+        height: 100%;
         overflow: hidden;
-        padding: 2 * $v-space 0;
+        padding: $v-space + 1rem 0; // fudge!
 
-        flex-direction: column;
-        align-items: unset;
-        justify-content: unset;
-
-        li {
-          text-align: unset;
-          margin-bottom: $space-lg;
-          // important to prevent an odd resize in transition
-          white-space: nowrap;
+        > ul {
+          flex-direction: column;
+          align-items: unset;
+          justify-content: unset;
+          margin: 0;
+          padding: 0;
+          > li {
+            text-align: unset;
+            margin-bottom: $space-lg;
+            margin-left: 0;
+            // important to prevent an odd resize in transition
+            white-space: nowrap;
+          }
         }
         background-color: $darkgrey;
         color: $beige;
         box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
 
-        a {
+        a,
+        a:hover {
+          background-color: transparent;
           color: $beige;
           font-weight: $font-weight-bolder;
           font-size: $font-size-lg;
+        }
+
+        .social {
+          display: block;
+          margin-bottom: $space-lg;
+
+          a {
+            font-size: 1rem;
+            margin-left: 1.25rem; // same as button
+          }
         }
       }
 
@@ -599,12 +631,11 @@ header.top {
       }
 
       // ... and position the menu onscreen
-      input#hb-toggle:checked ~ span ~ span ~ span ~ ul.navbar {
+      input#hb-toggle:checked ~ span ~ span ~ span ~ .navbar {
         width: Max(50%, 500px); // Note: Uppercase Sass/Css disambiguation here
         padding-left: $h-space;
-        -webkit-font-smoothing: antialiased;
         /* to stop flickering of text in safari */
-
+        -webkit-font-smoothing: antialiased;
         transition: width 0.4s, padding-left 0.4s cubic-bezier(0.77,0.2,0.05,1.0);
       }
     }
@@ -637,9 +668,9 @@ header.top {
         transform: rotate(45deg) translate(1px, 3px);
       }
 
-      input#hb-toggle:checked ~ span ~ span ~ span ~ ul.navbar {
-        right: 0;
-        left: 0;
+      input#hb-toggle:checked ~ span ~ span ~ span ~ .navbar {
+        //right: 0;
+        //left: 0;
         width: 100%;
       }
     }
