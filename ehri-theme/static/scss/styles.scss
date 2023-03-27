@@ -46,13 +46,13 @@ html {
   // Dynamic font-size test
   //font-size: calc(15px + 0.190625vw);
   height: 100vh;
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
 html,
 body {
   padding: 0;
   margin: 0;
-  height: 100%;
 }
 
 body {
@@ -61,6 +61,11 @@ body {
 
   display: flex;
   flex-direction: column;
+  background-color: $white;
+  max-width: 1742px;
+  min-height: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 h1, h2, h3, h4, h5, h6
@@ -127,6 +132,11 @@ a {
   font-family: $headings-font-family;
   font-weight: $font-weight-bold;
   background-color: $white;
+
+  &:hover {
+    border-color: $beige;
+    background-color: $beige;
+  }
 }
 
 input,
@@ -163,6 +173,10 @@ textarea {
     font-size: 1.75rem;
     font-weight: $font-weight-bold;
     font-family: $headings-font-family;
+
+    @media (max-width: $breakpoint-tablet) {
+
+    }
   }
 
   li {
@@ -171,14 +185,23 @@ textarea {
 
   @media (max-width: $breakpoint-tablet) {
     max-width: unset;
+    padding-left: 0;
+    padding-right: 0;
     margin-left: $h-space;
     margin-right: $h-space;
   }
+
+
 }
 
 .paper {
   background-image: url(../images/doc-paper-bgd-yellow.jpg);
   padding: 5rem 25%;
+
+  @media (max-width: $breakpoint-tablet) {
+    padding-left: $h-space;
+    padding-right: $h-space;
+  }
 }
 
 .home.video {
@@ -215,7 +238,8 @@ textarea {
 
   .resource-card {
     display: grid;
-    grid-template-rows: 1fr 1.25fr;
+    grid-template-rows: 12rem 1.25fr;
+    height: 100%;
     border-radius: 10px;
     background: $beige-light;
 
@@ -249,12 +273,14 @@ textarea {
       }
 
       a.button-primary {
+        margin-top: auto;
         align-self: start;
       }
     }
   }
 
   @media (max-width: $breakpoint-tablet + 300px) {
+    grid-template-rows: 8rem 1.25fr;
     .resource-cards {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -382,6 +408,14 @@ textarea {
       }
     }
   }
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: 0 $h-space 10rem;
+  }
+
+  @media (max-width: $breakpoint-phone) {
+    grid-template-columns: 1fr;
+  }
 }
 
 // endregion
@@ -423,6 +457,7 @@ header.top {
   .title {
     font-size: $font-size-title;
     margin-left: 44px;
+    margin-right: 1rem;
   }
 
   .main-navbar {

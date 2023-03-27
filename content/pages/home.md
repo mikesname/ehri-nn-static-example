@@ -9,7 +9,7 @@ save_as: index.html
 
 <h1>Creating a UK National Holocaust Research Infrastructure</h1>
 
-<p class="intro">
+<p>
 The UK holds a unique collection of records relating to the Holocaust and refugees who 
 fled Nazi oppression. EHRI-UK is working towards finding and linking this source material 
 in the UK through a national digital Holocaust Research Infrastructure.
