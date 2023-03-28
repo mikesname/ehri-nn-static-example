@@ -12,7 +12,6 @@ $primary: #83014c;
 $headings-font-family: 'Barlow', sans-serif;
 $font-family-base: 'Noto Serif', serif;
 
-
 $font-size-base: 1.0625rem;
 $font-size-xs: 0.625rem;
 $font-size-sm: 0.875rem;
@@ -31,22 +30,57 @@ $space-xl: 2rem;
 
 $wine-red: #771646;
 $purple: #3E274B;
-$darkgrey: #46463D;
+$grey-dark: #46463D;
 $beige: #D5D2B8;
 $beige-light: linear-gradient(0deg, rgba(213, 210, 184, 0.2), rgba(213, 210, 184, 0.2)), #FFFFFF;
 $white: #FFF;
 
-$h-space: 3.4rem;
-$v-space: 3.1875rem;
-
 $breakpoint-tablet: 1024px;
 $breakpoint-phone: 576px;
+
+:root {
+  --purple: #{$purple};
+  --wine-red: #{$wine-red};
+  --grey-mid: rgba(0,0,0,0.15);
+  --grey-dark: #{$grey-dark};
+  --beige: #{$beige};
+  --beige-light-bg: #{$beige-light};
+  --white: #{$white};
+
+  --input-border-radius: 5px;
+  --card-border-radius: 10px;
+  --font-family-headings: #{$headings-font-family};
+  --font-family-text: #{$font-family-base};
+  --font-weight-reg: #{$font-weight-reg};
+  --font-weight-bold: #{$font-weight-bold};
+  --font-weight-bolder: #{$font-weight-bolder};
+
+  --margin-page-v: 3.1875rem;
+  --margin-page-h: 3.4rem;
+
+  --margin-section-v: 5rem;
+  --margin-section-h: var(--margin-page-h);
+
+  --padding-page-content-v: 4rem;
+  --padding-page-content-h: 18%;
+
+  @media (max-width: $breakpoint-tablet) {
+    --margin-page-v: 2.9rem;
+    --margin-page-h: 2.625rem;
+
+    --margin-section-v: 2rem;
+  }
+  @media (max-width: $breakpoint-phone) {
+    --margin-page-v: 2.25rem;
+    --margin-page-h: 1.25rem;
+  }
+}
 
 html {
   // Dynamic font-size test
   //font-size: calc(15px + 0.190625vw);
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: var(--grey-mid);
 }
 
 html,
@@ -56,7 +90,7 @@ body {
 }
 
 body {
-  font-family: $font-family-base;
+  font-family: var(--font-family-text);
   font-size: $font-size-base;
 
   display: flex;
@@ -70,7 +104,7 @@ body {
 
 h1, h2, h3, h4, h5, h6
 {
-  font-family: $headings-font-family;
+  font-family: var(--font-family-headings);
 }
 
 h1 {
@@ -116,45 +150,57 @@ a {
   h1 {
     font-size: $font-size-lg;
   }
-
 }
 // endregion
 
 // region Components
 
+// Grid where each cell as a minimum size, below which the grid will
+// wrap to fewer columns
+@mixin auto-grid($min-size, $gap) {
+  --auto-grid-min-size: #{$min-size};
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
+  grid-gap: $gap;
+  width: 100%;
+}
+
+// A generic button
 .button {
-  border-radius: 5px;
+  border-radius: var(--input-border-radius);
   border: 2px solid transparent;
   padding: .75rem 1.25rem;
   display: inline-block;
-  font-family: $headings-font-family;
-  font-weight: $font-weight-bold;
+  font-family: var(--font-family-headings);
+  font-weight: var(--font-weight-bold);
+  transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
 }
 
+// An action button
 .button-primary {
   @extend .button;
-  color: $primary;
-  border: 2px solid $primary;
+  color: var(--wine-red);
+  border: 2px solid var(--wine-red);
   white-space: nowrap;
-  background-color: $white;
+  background-color: var(--white);
 
   &:hover {
-    border-color: $beige;
-    background-color: $beige;
+    border-color: var(--beige);
+    background-color: var(--beige);
   }
 }
 
 input,
 textarea {
-  border: 1px solid $beige;
-  border-radius: 5px;
+  border: 1px solid var(--beige);
+  border-radius: var(--input-border-radius);
   display: block;
   padding: $space-sm;
   margin-bottom: $space-sm;
   box-sizing: border-box;
   width: 100%;
-  font-family: $headings-font-family;
-  font-weight: $font-weight-bold;
+  font-family: var(--font-family-headings);
+  font-weight: var(--font-weight-bold);
   font-size: $font-size-md;
 }
 
@@ -162,22 +208,102 @@ textarea {
   margin-top: $space-sm;
 }
 
+// Grid of resources...
+.resource-cards {
+  @include auto-grid(24rem, 4rem);
+
+  margin: 3rem 0 0 0;
+  padding: 0;
+}
+
+.resource-card {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 12rem 1.25fr;
+  height: 100%;
+  border-radius: var(--card-border-radius);
+  background: var(--beige-light-bg);
+
+  .resource-img {
+    overflow: hidden;
+    img {
+      border-top-left-radius: var(--card-border-radius);
+      border-top-right-radius: var(--card-border-radius);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .resource-info {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    align-items: start;
+    header {
+      font-family: var(--font-family-headings);
+      font-size: 1.75rem;
+      font-weight: var(--font-weight-bolder);
+    }
+    p {
+      // FIXME: line height?
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* number of lines to show */
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+
+    a.button-primary {
+      margin-top: auto;
+      align-self: start;
+    }
+  }
+
+  @media (max-width: $breakpoint-phone) {
+    // Setting a min size at small widths
+    // causes issues with breaking the box.
+    --auto-grid-min-size: unset;
+  }
+}
+
+
 // endregion
 
 // region Home page sections
 .hero {
+  padding: 5rem 25%;
+
+  @media (max-width: $breakpoint-tablet) {
+    max-width: unset;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-left: var(--margin-page-h);
+    margin-right: var(--margin-page-h);
+  }
+}
+
+section,
+.page-content
+{
+  padding: var(--padding-page-content-v) var(--padding-page-content-h);
   h1 {
     margin-top: 0;
   }
   h1:last-child {
     margin-bottom: 0;
   }
-  padding: 5rem 25%;
+
+  @media (max-width: $breakpoint-tablet) {
+    padding-left: var(--margin-page-h);
+    padding-right: var(--margin-page-h);
+  }
 
   p.intro {
     font-size: 1.75rem;
-    font-weight: $font-weight-bold;
-    font-family: $headings-font-family;
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-headings);
 
     @media (max-width: $breakpoint-tablet) {
 
@@ -185,28 +311,12 @@ textarea {
   }
 
   li {
-    list-style-type: '— ';
+    list-style-type: '—  ';
   }
-
-  @media (max-width: $breakpoint-tablet) {
-    max-width: unset;
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: $h-space;
-    margin-right: $h-space;
-  }
-
-
 }
 
 .paper {
   background-image: url(../images/doc-paper-bgd-yellow.jpg);
-  padding: 5rem 25%;
-
-  @media (max-width: $breakpoint-tablet) {
-    padding-left: $h-space;
-    padding-right: $h-space;
-  }
 }
 
 .home.video {
@@ -214,14 +324,29 @@ textarea {
   align-items: center;
   flex-direction: column;
 
+  h1 {
+    font-size: 2rem;
+    font-weight: var(--font-weight-reg);
+    color: var(--wine-red);
+  }
+
   img {
     object-fit: contain;
     width: 100%;
   }
+
+  .video-placeholder,
+  .video-embed
+  {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+  }
 }
 
+
+
 .home.services {
-  padding: 5rem $h-space;
+  padding: var(--margin-section-v) var(--margin-section-h);
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -230,72 +355,6 @@ textarea {
     margin-top: 0;
   }
 
-  .resource-cards {
-    display: grid;
-    grid-gap: 5rem;
-    grid-template-columns: repeat(3, 1fr);
-    margin: 3rem 0 0 0;
-    padding: 0;
-    li {
-      list-style: none;
-    }
-  }
-
-  .resource-card {
-    display: grid;
-    grid-template-rows: 12rem 1.25fr;
-    height: 100%;
-    border-radius: 10px;
-    background: $beige-light;
-
-    .resource-img {
-      overflow: hidden;
-      img {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-    .resource-info {
-      display: flex;
-      flex-direction: column;
-      padding: 3rem;
-      align-items: start;
-      header {
-        font-family: $headings-font-family;
-        font-size: 1.75rem;
-        font-weight: $font-weight-bolder;
-      }
-      p {
-        // FIXME: line height?
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 3; /* number of lines to show */
-        line-clamp: 3;
-        -webkit-box-orient: vertical;
-      }
-
-      a.button-primary {
-        margin-top: auto;
-        align-self: start;
-      }
-    }
-  }
-
-  @media (max-width: $breakpoint-tablet + 300px) {
-    grid-template-rows: 8rem 1.25fr;
-    .resource-cards {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: $breakpoint-phone + 200px) {
-    .resource-cards {
-      grid-template-columns: repeat(1, 1fr);
-    }
-  }
 }
 
 .home.latest {
@@ -307,8 +366,7 @@ textarea {
 
   .latest-cards {
     display: grid;
-    grid-gap: 3rem;
-    grid-template-columns: repeat(3, 1fr);
+    @include auto-grid(21rem, 3rem);
     margin: 0;
     padding: 0;
     li {
@@ -321,25 +379,13 @@ textarea {
     flex-direction: column;
     align-items: start;
     header {
-      font-family: $headings-font-family;
+      font-family: var(--font-family-headings);
       font-size: 1.75rem;
-      font-weight: $font-weight-bolder;
+      font-weight: var(--font-weight-bolder);
     }
 
     a.button-primary {
       align-self: start;
-    }
-  }
-
-  @media (max-width: $breakpoint-tablet + 300px) {
-    .latest-cards {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: $breakpoint-phone + 200px) {
-    .latest-cards {
-      grid-template-columns: repeat(1, 1fr);
     }
   }
 }
@@ -374,11 +420,7 @@ textarea {
 
 // region Contact page
 .contact-info {
-  padding: 0 25% 10rem 25%;
-
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 5rem;
+  @include auto-grid(340px, 4rem);
 
   .form {
     // Hide labels
@@ -404,8 +446,8 @@ textarea {
       }
       .person-name {
         grid-area: name;
-        font-family: $headings-font-family;
-        font-weight: $font-weight-bolder;
+        font-family: var(--font-family-headings);
+        font-weight: var(--font-weight-bolder);
       }
       .person-email {
         grid-area: email;
@@ -414,27 +456,44 @@ textarea {
     }
   }
 
-  @media (max-width: $breakpoint-tablet) {
-    padding: 0 $h-space 10rem;
-  }
-
   @media (max-width: $breakpoint-phone) {
-    grid-template-columns: 1fr;
+    //grid-template-columns: 1fr;
   }
 }
 
 // endregion
+
+// region Services page
+
+.services.page-content {
+  .resource-cards {
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+
+    .resource-card {
+      grid-template-columns: 1fr 3fr;
+      grid-template-rows: 1fr;
+      img {
+        border-bottom-left-radius: var(--card-border-radius);
+        border-top-right-radius: 0;
+      }
+      .resource-info {
+        padding: $space-xl;
+      }
+    }
+  }
+}
 
 /**
  * Header navigation
  */
 header.top {
   color: $wine-red;
-  font-family: $headings-font-family;
+  font-family: var(--font-family-headings);
 
   border-top: $font-size-xs solid $wine-red;
 
-  padding: $v-space $h-space;
+  padding: var(--margin-page-v) var(--margin-page-h);
 
   display: flex;
   flex-direction: row;
@@ -442,7 +501,7 @@ header.top {
 
   a {
     font-size: $font-size-md;
-    font-weight: $font-weight-bold;
+    font-weight: var(--font-weight-bold);
   }
 
   .header {
@@ -546,7 +605,7 @@ header.top {
         position: relative;
         top: $space-sm;
 
-        background: $purple;
+        background: var(--purple);
         border-radius: 3px;
 
         z-index: 1;
@@ -575,7 +634,7 @@ header.top {
         width: 0; // 0 size until toggle is clicked
         height: 100%;
         overflow: hidden;
-        padding: $v-space + 1rem 0; // fudge!
+        padding: calc(var(--margin-page-v) + 1rem) 0; // fudge!
 
         > ul {
           flex-direction: column;
@@ -591,15 +650,15 @@ header.top {
             white-space: nowrap;
           }
         }
-        background-color: $darkgrey;
-        color: $beige;
+        background-color: var(--grey-dark);
+        color: var(--beige);
         box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
 
         a,
         a:hover {
           background-color: transparent;
-          color: $beige;
-          font-weight: $font-weight-bolder;
+          color: var(--beige);
+          font-weight: var(--font-weight-bolder);
           font-size: $font-size-lg;
         }
 
@@ -618,7 +677,7 @@ header.top {
       input#hb-toggle:checked ~ span {
         opacity: 1;
         transform: rotate(45deg) translate(-2px, -1px);
-        background: $beige-light;
+        background: var(--beige-light-bg);
       }
 
       input#hb-toggle:checked ~ span:nth-last-child(3) {
@@ -633,7 +692,7 @@ header.top {
       // ... and position the menu onscreen
       input#hb-toggle:checked ~ span ~ span ~ span ~ .navbar {
         width: Max(50%, 500px); // Note: Uppercase Sass/Css disambiguation here
-        padding-left: $h-space;
+        padding-left: var(--margin-page-h);
         /* to stop flickering of text in safari */
         -webkit-font-smoothing: antialiased;
         transition: width 0.4s, padding-left 0.4s cubic-bezier(0.77,0.2,0.05,1.0);
@@ -688,13 +747,13 @@ header.top {
  */
 footer {
   margin-top: auto;
-  padding: $v-space $h-space;
+  padding: var(--margin-page-v) var(--margin-page-h);
 
-  background-color: $darkgrey;
-  color: $beige;
-  font-family: $headings-font-family;
+  background-color: var(--grey-dark);
+  color: var(--beige);
+  font-family: var(--font-family-headings);
   font-size: $font-size-lg;
-  font-weight: $font-weight-reg;
+  font-weight: var(--font-weight-reg);
   line-height: 24px;
 
   a {
@@ -714,7 +773,7 @@ footer {
   }
 
   a {
-    color: $beige;
+    color: var(--beige);
     text-decoration: none;
   }
 
@@ -730,7 +789,7 @@ footer {
       li {
         list-style: none;
         padding: $space-lg 0;
-        font-weight: $font-weight-bolder;
+        font-weight: var(--font-weight-bolder);
       }
     }
 
@@ -740,7 +799,7 @@ footer {
 
     ul > li > ul > li {
       font-size: $font-size-md;
-      font-weight: $font-weight-reg;
+      font-weight: var(--font-weight-reg);
       padding: $space-sm 0;
     }
   }
@@ -750,7 +809,7 @@ footer {
     a {
       display: block;
       font-size: $font-size-sm;
-      font-weight: $font-weight-reg;
+      font-weight: var(--font-weight-reg);
     }
   }
 
