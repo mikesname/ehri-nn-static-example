@@ -155,6 +155,12 @@ a {
 
 // region Components
 
+@mixin card() {
+  border-radius: var(--card-border-radius);
+  background: var(--beige-light-bg);
+  box-sizing: border-box;
+}
+
 // Grid where each cell as a minimum size, below which the grid will
 // wrap to fewer columns
 @mixin auto-grid($min-size, $gap) {
@@ -163,6 +169,13 @@ a {
   grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
   grid-gap: $gap;
   width: 100%;
+}
+
+.follow-buttons {
+  display: grid;
+  grid-template-columns: min-content min-content;
+  grid-gap: $space-md;
+  width: min-content;
 }
 
 // A generic button
@@ -217,12 +230,10 @@ textarea {
 }
 
 .resource-card {
-  box-sizing: border-box;
+  @include card();
   display: grid;
   grid-template-rows: 12rem 1.25fr;
   height: 100%;
-  border-radius: var(--card-border-radius);
-  background: var(--beige-light-bg);
 
   .resource-img {
     overflow: hidden;
@@ -240,8 +251,8 @@ textarea {
     padding: 3rem;
     align-items: start;
     header {
-      font-family: var(--font-family-headings);
       font-size: 1.75rem;
+      font-family: var(--font-family-headings);
       font-weight: var(--font-weight-bolder);
     }
     p {
@@ -266,6 +277,33 @@ textarea {
   }
 }
 
+.partner-cards {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-gap: $space-lg;
+
+  .partner-card {
+    @include card();
+    padding: $space-xl;
+    display: grid;
+    grid-template-areas: "header logo" "info info";
+    grid-template-columns: 1fr min-content;
+    .logo {
+      grid-area: logo;
+      width: 16rem;
+      height: auto;
+    }
+    header {
+      grid-area: header;
+      h3 {
+        margin: 0;
+      }
+    }
+    .info {
+      grid-area: info;
+    }
+  }
+}
 
 // endregion
 
@@ -302,6 +340,7 @@ section,
 
   p.intro {
     font-size: 1.75rem;
+    line-height: 2.25rem;
     font-weight: var(--font-weight-bold);
     font-family: var(--font-family-headings);
 
@@ -354,7 +393,6 @@ section,
   > p {
     margin-top: 0;
   }
-
 }
 
 .home.latest {
@@ -387,6 +425,10 @@ section,
     a.button-primary {
       align-self: start;
     }
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: $space-lg var(--margin-page-h);
   }
 }
 
@@ -455,10 +497,6 @@ section,
       }
     }
   }
-
-  @media (max-width: $breakpoint-phone) {
-    //grid-template-columns: 1fr;
-  }
 }
 
 // endregion
@@ -479,6 +517,15 @@ section,
       }
       .resource-info {
         padding: $space-xl;
+
+        p {
+          // Undo the properties which limited this element
+          // to a fixed height on the main page
+          display: block;
+          -webkit-line-clamp: unset;
+          -webkit-box-orient: unset;
+          line-clamp: unset;
+        }
       }
     }
   }
@@ -632,7 +679,7 @@ header.top {
         top: 0;
         right: 0;
         width: 0; // 0 size until toggle is clicked
-        height: 100%;
+        bottom: 0;
         overflow: hidden;
         padding: calc(var(--margin-page-v) + 1rem) 0; // fudge!
 
@@ -665,10 +712,10 @@ header.top {
         .social {
           display: block;
           margin-bottom: $space-lg;
+          padding: 0.75rem 1.25rem;
 
           a {
             font-size: 1rem;
-            margin-left: 1.25rem; // same as button
           }
         }
       }
@@ -827,7 +874,7 @@ footer {
   }
   .social {
     grid-area: social;
-    text-align: center;
+    justify-self: center;
     font-size: $font-size-base;
     padding-top: $space-lg;
   }
@@ -885,6 +932,7 @@ footer {
 
       ul > li {
         padding: $space-md;
+        padding-left: 0;
       }
 
       ul > li > ul {
@@ -899,7 +947,7 @@ footer {
       }
     }
     .social {
-      text-align: unset;
+      justify-self: start;
       margin-bottom: $space-xl;
     }
     .contact-card {

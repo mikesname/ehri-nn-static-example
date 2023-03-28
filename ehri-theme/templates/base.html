@@ -42,7 +42,9 @@
                         <li><a href="{{ SITEURL }}/{{ url }}">{{ title }}</a></li>
                         {% endfor %}
                     </ul>
-                    {% include "_social.html" %}
+                    <div class="social">
+                        {% include "_social.html" %}
+                    </div>
                 </div>
             </nav>
         </header>
@@ -106,7 +108,9 @@
 
                 </ul>
 
-                {% include "_social.html" %}
+                <div class="social">
+                    {% include "_social.html" %}
+                </div>
 
                 <div class="partners">
                     <p>Partners / Funders</p>
