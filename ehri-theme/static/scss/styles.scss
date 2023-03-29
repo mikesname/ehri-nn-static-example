@@ -313,10 +313,7 @@ textarea {
 
   @media (max-width: $breakpoint-tablet) {
     max-width: unset;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding: $space-xl 0;
     margin-left: var(--margin-page-h);
     margin-right: var(--margin-page-h);
   }
@@ -382,6 +379,53 @@ section,
   }
 }
 
+.home.hero {
+  .images {
+    float: right;
+    margin: -5rem 0rem 0rem 5rem;
+    shape-outside: polygon(30% 0, 100% 0, 100% 100%, 0 100%, 0 50%, 30% 50%);
+    shape-margin: 3rem;
+    position: relative;
+    height: 250px;
+    width: 400px;
+
+    .image1 {
+      background-image: url("../images/doklady-1.png");
+      z-index: 3;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      top: 50%;
+      height: 50%;
+      width: 80%;
+      background-position: center;
+    }
+    .image2 {
+      background-image: url("../images/names-2.png");
+      z-index: 2;
+      position: absolute;
+      left: 30%;
+      width: 60%;
+      top: 0;
+      right: 100%;
+      height: 60%;
+      filter: blur(2px);
+    }
+    .image3 {
+      background-image: url("../images/cards-still-1.png");
+      z-index: 1;
+      position: absolute;
+      background-position: center;
+      width: 50%;
+      right: 100%;
+      height: 50%;
+      top: 30%;
+      bottom: 20%;
+      left: 60%;
+      filter: blur(4px);
+    }
+  }
+}
 
 
 .home.services {
