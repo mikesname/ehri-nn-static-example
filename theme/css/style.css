@@ -2583,6 +2583,9 @@ textarea {
       margin-top: auto;
       align-self: start;
       justify-self: start; }
+  @media (max-width: 1024px) {
+    .resource-card .resource-info {
+      padding: 1.5rem; } }
   @media (max-width: 576px) {
     .resource-card {
       --auto-grid-min-size: unset; } }

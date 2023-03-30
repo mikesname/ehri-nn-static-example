@@ -274,7 +274,7 @@ textarea {
     }
   }
   .resource-info {
-    padding: 3rem;
+    padding: 2 * $space-lg;
     display: grid;
     align-items: start;
     grid-template-columns: auto min-content;
@@ -306,6 +306,12 @@ textarea {
       margin-top: auto;
       align-self: start;
       justify-self: start;
+    }
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    .resource-info {
+      padding: $space-lg;
     }
   }
 
