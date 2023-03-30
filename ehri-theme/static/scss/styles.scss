@@ -1,7 +1,7 @@
 
 @import "fonts.scss";
 
-$fa-font-path:        "../fonts";
+$fa-font-path: "../fonts";
 @import "fa/font-awesome";
 
 /**
@@ -118,14 +118,17 @@ h1 {
 
 h2 {
   font-size: 2.25rem;
+  line-height: 2.375rem;
 }
 
 h3 {
   font-size: $font-size-title;
+  line-height: 2.125rem;
 }
 
 h4 {
   font-size: 1.375rem;
+  line-height: 1.5rem;
 }
 
 h5 {
@@ -179,6 +182,21 @@ a {
   width: 100%;
 }
 
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  //font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+}
+
 .follow-buttons {
   display: grid;
   grid-template-columns: min-content min-content;
@@ -204,6 +222,8 @@ a {
   border: 2px solid var(--wine-red);
   white-space: nowrap;
   background-color: var(--white);
+  font-size: $font-size-md;
+  line-height: 1.35rem;
 
   &:hover {
     border-color: var(--beige);
@@ -254,16 +274,25 @@ textarea {
     }
   }
   .resource-info {
-    display: flex;
-    flex-direction: column;
     padding: 3rem;
+    display: grid;
     align-items: start;
+    grid-template-columns: auto min-content;
     header {
       font-size: 1.75rem;
       font-family: var(--font-family-headings);
       font-weight: var(--font-weight-bolder);
+      grid-area: 1 / 1 / 2 / 2;
+    }
+    .resource-icon {
+      grid-column: 2;
+      grid-row: 1;
+      font-size: $font-size-title;
+      line-height: 2rem;
+      justify-self: end;
     }
     p {
+      grid-area: 2 / 1 / 2 / 3;
       // FIXME: line height?
       overflow: hidden;
       display: -webkit-box;
@@ -273,8 +302,10 @@ textarea {
     }
 
     a.button-primary {
+      grid-area: 3 / 1 / 3 / 3;
       margin-top: auto;
       align-self: start;
+      justify-self: start;
     }
   }
 
@@ -317,8 +348,8 @@ textarea {
 
 // region Home page sections
 .hero {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
   margin-left: auto;
   margin-right: auto;
 
@@ -396,6 +427,9 @@ section,
   grid-template-columns: auto 10% 25% auto 5% 10%;
   grid-template-rows: 15% min-content min-content 5% 25% 20%;
 
+  // Nudge images over slightly
+  margin-right: -4rem;
+
   h1 {
     grid-column: 1 / 3;
     grid-row: 1 / 4;
@@ -411,9 +445,8 @@ section,
   .button-primary {
     grid-column: 1 / 2;
     grid-row: 6 / 7;
-    width: min-content;
-    height: min-content;
     align-self: end;
+    justify-self: start;
     z-index: 4;
   }
 
@@ -449,7 +482,7 @@ section,
   @media (max-width: $breakpoint-tablet) {
     grid-template-columns: auto 10% 5% 20%;
     grid-template-rows: 20% auto 10% auto min-content;
-    margin-right: -10px;
+    margin-right: -.5rem;
 
     h1 {
       grid-column: 1 / 4;
@@ -582,29 +615,35 @@ section,
     }
   }
 
-  .person-list {
+  .contact-list {
     margin-bottom: 5rem;
+    display: grid;
     grid-template-columns: 1fr;
-    .person {
+    grid-gap: $space-xl;
+
+    font-family: var(--font-family-headings);
+    font-weight: var(--font-weight-bolder);
+
+    .contact-card {
       display: grid;
       grid-column-gap: 1rem;
       grid-template-rows: min-content auto;
       grid-template-columns: min-content auto;
       grid-template-areas: "img name" "img email";
 
-      img.person-image {
+      img.contact-image {
         grid-area: img;
         width: 3.75rem;
         height: 3.75rem;
+        border-radius: 50%;
       }
-      .person-name {
+      .contact-name {
         grid-area: name;
-        font-family: var(--font-family-headings);
-        font-weight: var(--font-weight-bolder);
       }
-      .person-email {
+      .contact-email {
         grid-area: email;
         font-size: $font-size-sm;
+        font-weight: var(--font-weight-reg);
       }
     }
   }
@@ -615,32 +654,69 @@ section,
 // region Services page
 
 .services.page-content {
-  .resource-cards {
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr;
-
-    .resource-card {
-      grid-template-columns: 1fr 3fr;
+  @media (min-width: $breakpoint-phone) {
+    .resource-cards {
       grid-template-rows: 1fr;
-      img {
-        border-bottom-left-radius: var(--card-border-radius);
-        border-top-right-radius: 0;
-      }
-      .resource-info {
-        padding: $space-xl;
+      grid-template-columns: 1fr;
 
-        p {
-          // Undo the properties which limited this element
-          // to a fixed height on the main page
-          display: block;
-          -webkit-line-clamp: unset;
-          -webkit-box-orient: unset;
-          line-clamp: unset;
+      .resource-card {
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: 1fr;
+        img {
+          border-bottom-left-radius: var(--card-border-radius);
+          border-top-right-radius: 0;
         }
+      }
+    }
+    .resource-info {
+      padding: $space-xl;
+
+      p {
+        // Undo the properties which limited this element
+        // to a fixed height on the main page
+        display: block;
+        -webkit-line-clamp: unset;
+        -webkit-box-orient: unset;
+        line-clamp: unset;
       }
     }
   }
 }
+
+// On narrow widths, turn resource cards into
+// a single-line list
+//@media (max-width: $breakpoint-phone) {
+//  .resource-cards {
+//    margin: 0;
+//    grid-gap: 2px;
+//
+//    .resource-card {
+//      height: min-content;
+//      grid-template-rows: unset;
+//      border-radius: 0;
+//      .resource-img {
+//        display: none;
+//      }
+//      .resource-info {
+//        width: max-content;
+//        p {
+//          display: none;
+//        }
+//        .button-primary {
+//          display: none;
+//        }
+//      }
+//    }
+//    .resource-card:first-child {
+//      border-top-right-radius: var(--card-border-radius);
+//      border-top-left-radius: var(--card-border-radius);
+//    }
+//    .resource-card:last-child {
+//      border-bottom-left-radius: var(--card-border-radius);
+//      border-bottom-right-radius: var(--card-border-radius);
+//    }
+//  }
+//}
 
 /**
  * Header navigation
@@ -751,7 +827,7 @@ header.top {
         cursor: pointer;
 
         opacity: 0; /* hide this */
-        z-index: 2; /* and place it over the hamburger */
+        z-index: 1002; /* and place it over the hamburger */
 
         -webkit-touch-callout: none;
       }
@@ -766,7 +842,7 @@ header.top {
         background: var(--purple);
         border-radius: 3px;
 
-        z-index: 1;
+        z-index: 1001;
 
         transform-origin: 4px 0;
 
@@ -786,7 +862,7 @@ header.top {
       .navbar {
         box-sizing: border-box;
         position: absolute;
-        z-index: 0;
+        z-index: 1000;
         top: 0;
         right: 0;
         width: 0; // 0 size until toggle is clicked
