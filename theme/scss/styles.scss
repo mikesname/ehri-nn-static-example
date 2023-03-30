@@ -1117,6 +1117,9 @@ footer {
     .footer-content {
       grid-template-areas: "headings" "menu1" "menu2" "menu3" "social" "partners";
 
+      .logo img {
+        width: 69px;
+      }
       ul > li {
         padding: $space-md;
         padding-left: 0;

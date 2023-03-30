@@ -3098,6 +3098,8 @@ footer {
   @media (max-width: 576px) {
     footer .footer-content {
       grid-template-areas: "headings" "menu1" "menu2" "menu3" "social" "partners"; }
+      footer .footer-content .logo img {
+        width: 69px; }
       footer .footer-content ul > li {
         padding: 1rem;
         padding-left: 0; }
