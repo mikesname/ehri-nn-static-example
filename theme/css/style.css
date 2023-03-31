@@ -2488,6 +2488,19 @@ a {
   white-space: nowrap;
   direction: ltr; }
 
+.contact-card {
+  font-family: var(--font-family-headings);
+  font-weight: var(--font-weight-bold);
+  padding-top: 1.5rem; }
+  .contact-card header,
+  .contact-card header a {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bolder); }
+  .contact-card a {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-reg); }
+
 .follow-buttons {
   display: grid;
   grid-template-columns: min-content min-content;
@@ -2772,6 +2785,9 @@ section,
     padding: 0; }
     .home.latest .latest-cards li {
       list-style: none; }
+    .home.latest .latest-cards li.twitter {
+      row-span: 2;
+      max-height: 300px; }
   .home.latest .latest-card {
     display: flex;
     flex-direction: column;
@@ -2792,10 +2808,15 @@ section,
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 2rem; }
 
-.people .person .person-image {
-  width: 16.25rem;
-  height: 16.25rem;
-  border-radius: 50%; }
+.people .person {
+  display: flex;
+  flex-direction: column; }
+  .people .person .person-image {
+    width: 16.25rem;
+    height: 16.25rem;
+    border-radius: 50%; }
+  .people .person .contact-card {
+    margin-top: auto; }
 
 @media (max-width: 776px) {
   .people .person-list {
@@ -3052,12 +3073,6 @@ footer {
       font-size: 1.125rem;
       font-weight: var(--font-weight-reg);
       padding: 0.5rem 0; }
-  footer .contact-card {
-    margin-top: 1.5rem; }
-    footer .contact-card a {
-      display: block;
-      font-size: 0.875rem;
-      font-weight: var(--font-weight-reg); }
   footer .footer-headings {
     grid-area: headings; }
   footer .menu-1 {

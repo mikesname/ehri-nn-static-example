@@ -8,10 +8,10 @@ $fa-font-path: "../fonts";
  * Globals
  */
 // region Global
-$primary: #83014c;
 $headings-font-family: 'Barlow', sans-serif;
 $font-family-base: 'Noto Serif', serif;
 
+// Font sizing
 $font-size-base: 1.0625rem;
 $font-size-xs: 0.625rem;
 $font-size-sm: 0.875rem;
@@ -19,15 +19,18 @@ $font-size-md: 1.125rem;
 $font-size-lg: 1.5rem;
 $font-size-title: 2rem;
 
+// Font weightings
 $font-weight-reg: 400;
 $font-weight-bold: 500;
 $font-weight-bolder: 600;
 
+// General spacing
 $space-sm: 0.5rem;
 $space-md: 1rem;
 $space-lg: 1.5rem;
 $space-xl: 2rem;
 
+// Common colours
 $wine-red: #771646;
 $purple: #3E274B;
 $grey-dark: #46463D;
@@ -36,9 +39,11 @@ $beige-light: linear-gradient(0deg, rgba(213, 210, 184, 0.2), rgba(213, 210, 184
 $white: #FFF;
 $black: #46463D;
 
+// Breakpoints
 $breakpoint-tablet: 1024px;
 $breakpoint-phone: 576px;
 
+// Global custom properties
 :root {
   --purple: #{$purple};
   --wine-red: #{$wine-red};
@@ -195,6 +200,25 @@ a {
   word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
+}
+
+.contact-card {
+
+  font-family: var(--font-family-headings);
+  font-weight: var(--font-weight-bold);
+  padding-top: $space-lg;
+
+  header,
+  header a
+  {
+    font-size: $font-size-lg;
+    font-weight: var(--font-weight-bolder);
+  }
+  a {
+    display: block;
+    font-size: $font-size-sm;
+    font-weight: var(--font-weight-reg);
+  }
 }
 
 .follow-buttons {
@@ -560,6 +584,10 @@ section,
     li {
       list-style: none;
     }
+    li.twitter {
+      row-span: 2;
+      max-height: 300px;
+    }
   }
 
   .latest-card {
@@ -594,10 +622,16 @@ section,
     grid-gap: 2rem;
   }
   .person {
+    display: flex;
+    flex-direction: column;
     .person-image {
       width: 16.25rem;
       height: 16.25rem;
       border-radius: 50%;
+    }
+
+    .contact-card {
+      margin-top: auto;
     }
   }
 
@@ -1041,15 +1075,6 @@ footer {
       font-size: $font-size-md;
       font-weight: var(--font-weight-reg);
       padding: $space-sm 0;
-    }
-  }
-
-  .contact-card {
-    margin-top: $space-lg;
-    a {
-      display: block;
-      font-size: $font-size-sm;
-      font-weight: var(--font-weight-reg);
     }
   }
 
